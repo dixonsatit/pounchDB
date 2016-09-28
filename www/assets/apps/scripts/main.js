@@ -51,7 +51,7 @@
       var email      = $('<td></td>');
       var phone      = $('<td></td>');
       var actions    = $('<td></td>');
-      var btnDelete  = $('<button></button>');
+      var btnDelete  = $('<a href="javascript:;" class="btn btn-outline btn-circle btn-sm purple"><i class="fa fa-edit"></i> Edit </a>');
 
       tr.attr('id','user_' + user._id);
 
