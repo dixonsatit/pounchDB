@@ -106,14 +106,18 @@
   }
 
   function onClickBtnDelete(event) {
-      if($.confirm({
-          title: 'Delete contact?',
-          confirmButton: 'Yes',
-          cancelButton: 'No'
-      })){
-        db.remove(event.data);
-        showUsers();
-      }
+      $.confirm({
+          title: 'Delete user?',
+          content: '',
+          autoClose: 'cancel|6000',
+          confirm: function(){
+            db.remove(event.data);
+            showUsers();
+          },
+          cancel:function(){
+
+          }
+      });
   }
 
   $( "#form-user" ).on( "submit", function( event ) {
