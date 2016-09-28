@@ -9,8 +9,6 @@
     live: true
   }).on('change', showUsers);
 
-  showUsers();
-
   function save(data) {
       db.get(data._id).catch(function (err) {
         if (err.name === 'not_found') {
@@ -20,26 +18,14 @@
                 email: data.email,
                 phone: data.phone
           };
-        } else { // hm, some other error
+        } else {
           throw err;
         }
       }).then(function (configDoc) {
         db.put(configDoc);
       }).catch(function (err) {
-        // handle any errors
-      });
 
-      // var user = {
-      //     _id: new Date().toISOString(),
-      //     fullname: data.fullname,
-      //     email: data.email,
-      //     phone: data.phone
-      // };
-      // db.put(user, function callback(err, result) {
-      //   if (!err) {
-      //     console.log('Successfully!.');
-      //   }
-      // });
+      });
       showUsers();
   }
 
@@ -111,20 +97,18 @@
           phone: data.phone
         });
     }).catch(function (err) {
-      // handle any errors
+
     });
   }
 
   function onRowClick(event) {
-    renderFormUpdate(event.data);
+      renderFormUpdate(event.data);
   }
 
   function onClickBtnDelete(event) {
-    db.remove(event.data);
-    showUsers();
+      db.remove(event.data);
+      showUsers();
   }
-
-
 
   $( "#form-user" ).on( "submit", function( event ) {
       event.preventDefault();
@@ -141,5 +125,7 @@
   $( "#btn-create" ).on( "click", function( event ) {
       create();
   });
+
+  showUsers();
 
 })();
