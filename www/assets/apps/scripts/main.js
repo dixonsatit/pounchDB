@@ -107,7 +107,7 @@
 
   function onClickBtnDelete(event) {
       $.confirm({
-          title: 'Delete user?',
+          title: 'Delete contact?',
           content: '',
           autoClose: 'cancel|6000',
           confirm: function(){
